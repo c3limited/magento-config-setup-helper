@@ -1,0 +1,14 @@
+{
+    "name": "c3/config-setup-helper",
+    "type": "magento-module",
+    "description": "Development tool to aid creating setup scripts for config values",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+            {
+            	"name":"C3 development",
+            	"email":"dev@c3media.co.uk"
+            }
+    ]
+}
