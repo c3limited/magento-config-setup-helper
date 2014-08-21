@@ -1,8 +1,19 @@
 <?xml version="1.0"?>
+<!--
+/**
+* C3 Media Ltd
+*
+* @title       Config Setup Helper
+* @category    C3
+* @package     C3_ConfigSetupHelper
+* @author      C3 Development Team <development@c3media.co.uk>
+* @copyright   Copyright (c) 2014 C3 Media Ltd (http://www.c3media.co.uk)
+*/
+-->
 <config>
     <modules>
         <C3_ConfigSetupHelper>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </C3_ConfigSetupHelper>
     </modules>
     <global>
@@ -11,6 +22,11 @@
                 <class>C3_ConfigSetupHelper_Model</class>
             </c3_configsetuphelper>
         </models>
+        <helpers>
+            <c3_configsetuphelper>
+                <class>C3_ConfigSetupHelper_Helper</class>
+            </c3_configsetuphelper>
+        </helpers>
         <blocks>
             <c3_configsetuphelper>
                 <class>C3_ConfigSetupHelper_Blocks</class>
@@ -23,6 +39,15 @@
         </blocks>
     </global>
     <adminhtml>
+        <translate>
+            <modules>
+                <C3_ConfigSetupHelper>
+                    <files>
+                        <default>C3_ConfigSetupHelper.csv</default>
+                    </files>
+                </C3_ConfigSetupHelper>
+            </modules>
+        </translate>
         <events>
             <admin_system_config_section_save_after>
                 <observers>

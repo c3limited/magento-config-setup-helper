@@ -17,6 +17,9 @@ class C3_ConfigSetupHelper_Model_Observer
             return;
         }
 
+        // Helper for translations
+        $helper = Mage::helper('c3_configsetuphelper');
+
         $website = $ob->getWebsite();
         $store = $ob->getStore();
         $section = $ob->getSection();
@@ -34,9 +37,9 @@ class C3_ConfigSetupHelper_Model_Observer
         $pathValues = $this->_getPathValues($paths, $website, $store);
 
         // Output values in string per group
-        $string = '<pre>' . $this->_getHeader() . "// Config for {$section}\n";
+        $string = '<pre>' . $this->_getHeader() . '// ' . $helper->__('Config for') . ' ' . $helper->__($section) . "\n";
         foreach (Mage::app()->getRequest()->getParam('show_config') as $groupname => $group) {
-            $string .= "\n// Settings for '{$groupname}' group\n";
+            $string .= "\n// " . $helper->__('Settings for %s group', "'".$groupname."'"). "\n";
             foreach (array_keys($group['fields']) as $fieldname) {
                 $fullName = "{$section}/{$groupname}/{$fieldname}";
                 // Skip if name was not retrieved
