@@ -23,8 +23,7 @@ class C3_ConfigSetupHelper_Model_Observer
 
         // Get fully qualified field names from form
         $paths = array();
-        //TODO: Replace $_REQUEST with request object
-        foreach ($_REQUEST['show_config'] as $groupname => $group) {
+        foreach (Mage::app()->getRequest()->getParam('show_config') as $groupname => $group) {
             foreach (array_keys($group['fields']) as $fieldname) {
                 $fullName = "{$section}/{$groupname}/{$fieldname}";
                 $paths[] = $fullName;
@@ -36,7 +35,7 @@ class C3_ConfigSetupHelper_Model_Observer
 
         // Output values in string per group
         $string = '<pre>' . $this->_getHeader() . "// Config for {$section}\n";
-        foreach ($_REQUEST['show_config'] as $groupname => $group) {
+        foreach (Mage::app()->getRequest()->getParam('show_config') as $groupname => $group) {
             $string .= "\n// Settings for '{$groupname}' group\n";
             foreach (array_keys($group['fields']) as $fieldname) {
                 $fullName = "{$section}/{$groupname}/{$fieldname}";
@@ -44,11 +43,11 @@ class C3_ConfigSetupHelper_Model_Observer
                 if (!isset($pathValues[$fullName])) {
                     continue;
                 }
-                $showVal = "'{$pathValues[$fullName]}'";
+                $showVal = "'" . addslashes($pathValues[$fullName]) . "'";
                 if ($pathValues[$fullName] === null) {
                     $showVal = 'null';
                 }
-                $string .= "\$installer->setConfigData('{$fullName}', $showVal);\n";
+                $string .= "\$installer->setConfigData('" . addslashes($fullName) . "', $showVal);\n";
             }
         }
         $string .=  $this->_getFooter() . '</pre>';
