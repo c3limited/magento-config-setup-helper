@@ -1,6 +1,6 @@
 <_>
    <form_key>LmPh1brXn4ZVGRbq</form_key>
-   <name>C3_Config_Setup_Autogenerator</name>
+   <name>C3_ConfigSetupHelper</name>
    <channel>community</channel>
    <version_ids>
       <version_ids>2</version_ids>
@@ -53,7 +53,7 @@
             <max/>
          </max>
          <files>
-            <files>         </files>
+            <files>           </files>
          </files>
       </package>
       <extension>
