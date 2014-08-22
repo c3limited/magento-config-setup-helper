@@ -1,0 +1,103 @@
+<_>
+   <form_key>LmPh1brXn4ZVGRbq</form_key>
+   <name>C3_Config_Setup_Autogenerator</name>
+   <channel>community</channel>
+   <version_ids>
+      <version_ids>2</version_ids>
+   </version_ids>
+   <summary>Automatically creates a setup script for selected options in system configuration page.</summary>
+   <description>&lt;p&gt;When enabled, adds check-boxes next to each entry in the system config view. By checking some of these, even across multiple groups (though just within one tab), after saving the settings you are presented with the complete code to set these options via a setup script including startSetup and endSetup.&lt;/p&gt;
+
+&lt;p&gt;Features:
+&lt;ul&gt;&lt;li&gt;Speed up development - ready to copy and paste into a setup script and save&lt;/li&gt;
+&lt;li&gt;Works with any extension that displays options in the system config&lt;/li&gt;
+&lt;li&gt;Self-commenting: Gives section and group names to aid visibility&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</description>
+   <license>GNU General Public License</license>
+   <license_uri>http://www.opensource.org/licenses/gpl-license.php</license_uri>
+   <version>1.0.1</version>
+   <stability>stable</stability>
+   <notes>&lt;p&gt;Features:
+&lt;ul&gt;&lt;li&gt;Speed up development - ready to copy and paste into a setup script and save&lt;/li&gt;
+&lt;li&gt;Works with any extension that displays options in the system config&lt;/li&gt;
+&lt;li&gt;Self-commenting: Gives section and group names to aid visibility&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+
+&lt;p&gt;Known issues:
+&lt;ul&gt;&lt;li&gt;There are some settings in e.g. Paypal that aren’t currently outputting correctly. We are looking into this for the next version.&lt;/li&gt;
+&lt;li&gt;Oldest supported CE version is 1.7.0.1&lt;/li&gt;
+&lt;/ul&gt;</notes>
+   <authors>
+      <name>
+         <name>C3 Media</name>
+      </name>
+      <user>
+         <user>c3media_ltd</user>
+      </user>
+      <email>
+         <email>hello@c3media.co.uk</email>
+      </email>
+   </authors>
+   <depends_php_min>5.2.0</depends_php_min>
+   <depends_php_max>6.0.0</depends_php_max>
+   <depends>
+      <package>
+         <name>
+            <name/>
+         </name>
+         <channel>
+            <channel/>
+         </channel>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+         <files>
+            <files>         </files>
+         </files>
+      </package>
+      <extension>
+         <name>
+            <name>Core</name>
+         </name>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+      </extension>
+   </depends>
+   <contents>
+      <target>
+         <target>magelocal</target>
+         <target>magelocal</target>
+         <target>magelocale</target>
+         <target>mageetc</target>
+      </target>
+      <path>
+         <path/>
+         <path>C3/ConfigSetupHelper</path>
+         <path>en_US/C3_ConfigSetupHelper.csv</path>
+         <path>modules/C3_ConfigSetupHelper.xml</path>
+      </path>
+      <type>
+         <type>file</type>
+         <type>dir</type>
+         <type>file</type>
+         <type>file</type>
+      </type>
+      <include>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+      </include>
+      <ignore>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+      </ignore>
+   </contents>
+</_>
