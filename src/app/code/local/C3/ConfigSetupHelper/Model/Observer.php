@@ -1,4 +1,13 @@
 <?php
+/**
+ * C3 Media Ltd
+ *
+ * @title       Config Setup Helper
+ * @category    C3
+ * @package     C3_ConfigSetupHelper
+ * @author      C3 Development Team <development@c3media.co.uk>
+ * @copyright   Copyright (c) 2014 C3 Media Ltd (http://www.c3media.co.uk)
+ */
 
 /**
  * Observer for config setup helper
@@ -20,9 +29,29 @@ class C3_ConfigSetupHelper_Model_Observer
         // Helper for translations
         $helper = Mage::helper('c3_configsetuphelper');
 
-        $website = $ob->getWebsite();
-        $store = $ob->getStore();
+        // Get website and store codes and ids
+        $websiteCode = $ob->getWebsite();
+        $website = null;
+        if ($websiteCode !== null) {
+            $website = Mage::getModel('core/website')->load($websiteCode, 'code')->getId();
+        }
+        $storeCode = $ob->getStore();
+        $store = null;
+        if ($storeCode !== null) {
+            $store = Mage::getModel('core/store')->load($storeCode, 'code')->getId();
+        }
         $section = $ob->getSection();
+
+        // Set scope based on what has been set
+        if ($store !== null) {
+            $scope = 'stores';
+            $scopeId = $store;
+        } elseif ($website !== null) {
+            $scope = 'websites';
+            $scopeId = $website;
+        } else {
+            $scope = 'default';
+        }
 
         // Get fully qualified field names from form
         $paths = array();
@@ -50,7 +79,13 @@ class C3_ConfigSetupHelper_Model_Observer
                 if ($pathValues[$fullName] === null) {
                     $showVal = 'null';
                 }
-                $string .= "\$installer->setConfigData('" . addslashes($fullName) . "', $showVal);\n";
+                // If non-default scope used, add options to method call
+                if ($scope == 'default') {
+                    $scopeArgs = '';
+                } else {
+                    $scopeArgs = ", '{$scope}', '{$scopeId}'";
+                }
+                $string .= "\$installer->setConfigData('" . addslashes($fullName) . "', {$showVal}{$scopeArgs});\n";
             }
         }
         $string .=  $this->_getFooter() . '</pre>';
@@ -77,7 +112,7 @@ $installer->startSetup();
      */
     protected function _getFooter()
     {
-        return '$installer->endSetup();';
+        return "\n" . '$installer->endSetup();';
     }
 
     /**
@@ -93,10 +128,10 @@ $installer->startSetup();
         // Get collection with correct scope and paths
         $collection = Mage::getModel('core/config_data')->getCollection();
         if ($store !== null) {
-            $collection->addFieldToFilter('scope','store');
+            $collection->addFieldToFilter('scope','stores');
             $collection->addFieldToFilter('scope_id',$store);
         } elseif ($website !== null) {
-            $collection->addFieldToFilter('scope','website');
+            $collection->addFieldToFilter('scope','websites');
             $collection->addFieldToFilter('scope_id',$website);
         } else {
             $collection->addFieldToFilter('scope','default');

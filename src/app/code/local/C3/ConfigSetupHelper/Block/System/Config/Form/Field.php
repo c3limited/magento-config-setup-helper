@@ -1,10 +1,19 @@
 <?php
 /**
+ * C3 Media Ltd
+ *
+ * @title       Config Setup Helper
+ * @category    C3
+ * @package     C3_ConfigSetupHelper
+ * @author      C3 Development Team <development@c3media.co.uk>
+ * @copyright   Copyright (c) 2014 C3 Media Ltd (http://www.c3media.co.uk)
+ */
+
+/**
  * Abstract config form element renderer
  *
  * @category   Mage
  * @package    Mage_Adminhtml
- * @author      Magento Core Team <core@magentocommerce.com>
  */
 class C3_ConfigSetupHelper_Block_System_Config_Form_Field
     extends Mage_Adminhtml_Block_System_Config_Form_Field

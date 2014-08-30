@@ -1,5 +1,5 @@
 <_>
-   <form_key>LmPh1brXn4ZVGRbq</form_key>
+   <form_key>HbXUPZcUSwTKXDyP</form_key>
    <name>C3_ConfigSetupHelper</name>
    <channel>community</channel>
    <version_ids>
@@ -11,19 +11,14 @@
 &lt;p&gt;Features:
 &lt;ul&gt;&lt;li&gt;Speed up development - ready to copy and paste into a setup script and save&lt;/li&gt;
 &lt;li&gt;Works with any extension that displays options in the system config&lt;/li&gt;
-&lt;li&gt;Self-commenting: Gives section and group names to aid visibility&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</description>
+&lt;li&gt;Self-commenting: Gives section and group names to aid visibility&lt;/li&gt;
+&lt;li&gt;Set default, website and store-view settings&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</description>
    <license>GNU General Public License</license>
    <license_uri>http://www.opensource.org/licenses/gpl-license.php</license_uri>
-   <version>1.0.1</version>
+   <version>1.1.0</version>
    <stability>stable</stability>
-   <notes>&lt;p&gt;Features:
-&lt;ul&gt;&lt;li&gt;Speed up development - ready to copy and paste into a setup script and save&lt;/li&gt;
-&lt;li&gt;Works with any extension that displays options in the system config&lt;/li&gt;
-&lt;li&gt;Self-commenting: Gives section and group names to aid visibility&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
-
-&lt;p&gt;Known issues:
-&lt;ul&gt;&lt;li&gt;There are some settings in e.g. Paypal that aren’t currently outputting correctly. We are looking into this for the next version.&lt;/li&gt;
-&lt;li&gt;Oldest supported CE version is 1.7.0.1&lt;/li&gt;
+   <notes>&lt;ul&gt;
+&lt;li&gt;Outputs correct scope for store view, website and default settings (explicit scope omitted for the latter).&lt;/li&gt;
 &lt;/ul&gt;</notes>
    <authors>
       <name>
@@ -53,7 +48,7 @@
             <max/>
          </max>
          <files>
-            <files>           </files>
+            <files>            </files>
          </files>
       </package>
       <extension>
@@ -100,4 +95,8 @@
          <ignore/>
       </ignore>
    </contents>
+   <page>1</page>
+   <limit>200</limit>
+   <folder/>
+   <package/>
 </_>
