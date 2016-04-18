@@ -1,6 +1,8 @@
 Magento setup-script auto generator for system config settings
 ==============================================================
 
+**This is the Magento 1 extension. For the Magento 2 version, please see https://github.com/c3limited/magento2-configsetuphelper**
+
 Automatically creates a setup script for selected options in system configuration page.
 
 It's great to be able to try out settings on a development/staging environment before going live, but to ensure that the live site safely ends up with the same settings, and any other developers also have matching details, we create setup scripts to set config settings.
@@ -19,3 +21,6 @@ Features:
 Note that there are some settings in Paypal that aren’t currently outputting correctly. We are looking into this for the next version.
 
 Oldest supported CE version is 1.7.0.1
+
+Developed by C3 Media, a full service Magento agency - http://www.c3media.co.uk
+
