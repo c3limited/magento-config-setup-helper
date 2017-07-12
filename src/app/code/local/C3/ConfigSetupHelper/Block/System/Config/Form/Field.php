@@ -41,7 +41,7 @@ class C3_ConfigSetupHelper_Block_System_Config_Form_Field
             $nodes = $dom->query('td.label');
             foreach ($nodes as $node) {
                 $newNode = $nodes->getDocument()->createElement('input');
-                $newNode->setA('type', 'checkbox');
+                $newNode->setAttribute('type', 'checkbox');
                 $newNode->setAttribute('name', $namePrefix);
                 $newNode->setAttribute('value', '1');
                 $newNode->setAttribute('style', 'float:left;margin-right:6px');
