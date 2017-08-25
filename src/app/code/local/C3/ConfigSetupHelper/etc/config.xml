@@ -48,6 +48,13 @@
                 </C3_ConfigSetupHelper>
             </modules>
         </translate>
+        <layout>
+            <updates>
+                <c3_configsetuphelper>
+                    <file>confighelper.xml</file>
+                </c3_configsetuphelper>
+            </updates>
+        </layout>
         <events>
             <admin_system_config_section_save_after>
                 <observers>
@@ -56,34 +63,23 @@
                         <class>c3_configsetuphelper/observer</class>
                         <method>showSelectedConfig</method>
                     </c3_configsetuphelper>
+                    <c3_configsetuphelper_doc>
+                        <type>singleton</type>
+                        <class>c3_configsetuphelper/observer</class>
+                        <method>saveDocumentation</method>
+                    </c3_configsetuphelper_doc>
                 </observers>
             </admin_system_config_section_save_after>
         </events>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <config>
-                                    <children>
-                                        <c3_configsetuphelper>
-                                            <title>Configuration for Config Setup Helper</title>
-                                        </c3_configsetuphelper>
-                                    </children>
-                                </config>
-                            </children>
-                        </system>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
     </adminhtml>
     <default>
         <c3_configsetuphelper>
             <options>
                 <enabled>1</enabled>
             </options>
+            <documentation>
+                <enabled>1</enabled>
+            </documentation>
         </c3_configsetuphelper>
     </default>
 </config>

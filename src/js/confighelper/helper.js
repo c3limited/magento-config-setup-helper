@@ -1,0 +1,3 @@
+/*
+ Javascript for config helper documentation
+ */
