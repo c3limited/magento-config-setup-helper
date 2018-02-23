@@ -104,7 +104,11 @@ class C3_ConfigSetupHelper_Block_System_Config_Form_Field
         $id = preg_replace('#[\]\[]+#', '_', $namePrefix);
 
         $cssClass = 'config-doc';
-        if ($documentation === null) {
+        // Due to a problem with deleting entries, treat empty as not set
+        if ($documentation === '') {
+            $documentation = null;
+        }
+        if ($documentation === null || $documentation === '') {
             $cssClass .= ' nodoc';
             $height = self::MIN_TEXTAREA_DOC_HEIGHT;
         } else {

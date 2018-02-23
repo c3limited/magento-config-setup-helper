@@ -138,16 +138,16 @@ class C3_ConfigSetupHelper_Model_Observer
         $paths = array();
         foreach (Mage::app()->getRequest()->getParam('document') as $groupname => $group) {
             foreach ($group['fields'] as $fieldname => $value) {
-                if ($value == '') {
-                    continue;
-                }
                 $fullName = "document/{$section}/{$groupname}/{$fieldname}";
                 $paths[$fullName] = $value;
             }
         }
 
-        // Save documentation
+        // Save documentation, or delete if empty
         foreach ($paths as $path => $value) {
+            if ($value === null || $value === '') {
+                Mage::getConfig()->deleteConfig($path, $scope, $scopeId);
+            }
             Mage::getConfig()->saveConfig($path, $value, $scope, $scopeId);
         }
 
