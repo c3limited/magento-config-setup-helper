@@ -17,6 +17,7 @@ Features:
 * Speed up development - ready to copy and paste into a setup script and save
 * Works with any extension that displays options in the system config
 * Self-commenting: Gives section and group names to aid visibility
+* NEW: Notes can be added to any field via the (i) icons at the end of lines. They can be removed by editing them and removing the contents.
 
 Note that there are some settings in Paypal that aren’t currently outputting correctly. We are looking into this for the next version.
 
