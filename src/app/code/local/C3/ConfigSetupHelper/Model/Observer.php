@@ -95,6 +95,66 @@ class C3_ConfigSetupHelper_Model_Observer
     }
 
     /**
+     * Display config entries (as passed by form) in notification area ready to add to setup script
+     *
+     * @param $ob
+     */
+    public function saveDocumentation($ob)
+    {
+        // If not enabled, or no documentation saved, skip
+        if (!Mage::getStoreConfig('c3_configsetuphelper/options/enabled') || !isset($_REQUEST['document'])) {
+            return;
+        }
+
+        // Helper for translations
+        $helper = Mage::helper('c3_configsetuphelper');
+
+        // Get website and store codes and ids
+        $websiteCode = $ob->getWebsite();
+        $website = null;
+        if ($websiteCode !== null) {
+            $website = Mage::getModel('core/website')->load($websiteCode, 'code')->getId();
+        }
+        $storeCode = $ob->getStore();
+        $store = null;
+        if ($storeCode !== null) {
+            $store = Mage::getModel('core/store')->load($storeCode, 'code')->getId();
+        }
+        $section = $ob->getSection();
+
+        // Set scope based on what has been set
+        if ($store !== null) {
+            $scope = 'stores';
+            $scopeId = $store;
+        } elseif ($website !== null) {
+            $scope = 'websites';
+            $scopeId = $website;
+        } else {
+            $scope = 'default';
+            $scopeId = 0;
+        }
+
+        // Get fully qualified field names from form
+        $paths = array();
+        foreach (Mage::app()->getRequest()->getParam('document') as $groupname => $group) {
+            foreach ($group['fields'] as $fieldname => $value) {
+                $fullName = "document/{$section}/{$groupname}/{$fieldname}";
+                $paths[$fullName] = $value;
+            }
+        }
+
+        // Save documentation, or delete if empty
+        foreach ($paths as $path => $value) {
+            if ($value === null || $value === '') {
+                Mage::getConfig()->deleteConfig($path, $scope, $scopeId);
+            }
+            Mage::getConfig()->saveConfig($path, $value, $scope, $scopeId);
+        }
+
+        Mage::getConfig()->reinit();
+    }
+
+    /**
      * @return string
      */
     protected function _getHeader()

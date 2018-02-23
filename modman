@@ -1,3 +1,6 @@
-src/app/code/local/C3/ConfigSetupHelper app/code/local/C3/ConfigSetupHelper
-src/app/locale/en_US/C3_ConfigSetupHelper.csv   app/locale/en_US/C3_ConfigSetupHelper.csv
-src/app/etc/modules/C3_ConfigSetupHelper.xml    app/etc/modules/C3_ConfigSetupHelper.xml
+src/app/code/local/C3/ConfigSetupHelper                             app/code/local/C3/ConfigSetupHelper
+src/app/design/adminhtml/default/default/layout/confighelper.xml    app/design/adminhtml/default/default/layout/confighelper.xml
+src/app/locale/en_US/C3_ConfigSetupHelper.csv                       app/locale/en_US/C3_ConfigSetupHelper.csv
+src/app/etc/modules/C3_ConfigSetupHelper.xml                        app/etc/modules/C3_ConfigSetupHelper.xml
+src/js/confighelper                                                 js/confighelper
+src/skin/adminhtml/default/default/confighelper                     skin/adminhtml/default/default/confighelper
