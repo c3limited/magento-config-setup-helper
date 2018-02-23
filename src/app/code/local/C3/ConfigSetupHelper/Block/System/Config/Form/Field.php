@@ -33,12 +33,12 @@ class C3_ConfigSetupHelper_Block_System_Config_Form_Field
     protected function _decorateRowHtml($element, $html)
     {
         // If enabled, add checkboxes to this field
-        if (Mage::getStoreConfig('c3_configsetuphelper/options/enabled')) {
+        if ((string)Mage::getConfig()->getNode('c3_configsetuphelper/options/enabled', $element->getScope(), 0+$element->getScopeId())) {
             $html = $this->_decorateWithCheckbox($element, $html);
         }
 
         // If enabled add documentation or option to do so to field
-        if (Mage::getStoreConfig('c3_configsetuphelper/documentation/enabled')) {
+        if ((string)Mage::getConfig()->getNode('c3_configsetuphelper/documentation/enabled', $element->getScope(), 0+$element->getScopeId())) {
             $html = $this->_decorateWithDocumentation(
                 $this->_getDocumentation($element),
                 $element,
@@ -160,7 +160,7 @@ class C3_ConfigSetupHelper_Block_System_Config_Form_Field
         $configCode = str_replace(']', '', $configCode);
         $configCode = str_replace('[', '', $configCode);
         $configCode = Mage::app()->getRequest()->getParam('section') . '/' . $configCode;
-        $documentation = Mage::getStoreConfig('document/' . $configCode);
+        $documentation = (string)Mage::getConfig()->getNode('document/' . $configCode, $element->getScope(), 0+$element->getScopeId());
 
         return $documentation;
     }

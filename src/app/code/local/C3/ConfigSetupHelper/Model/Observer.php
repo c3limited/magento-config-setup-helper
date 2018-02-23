@@ -147,8 +147,12 @@ class C3_ConfigSetupHelper_Model_Observer
         foreach ($paths as $path => $value) {
             if ($value === null || $value === '') {
                 Mage::getConfig()->deleteConfig($path, $scope, $scopeId);
+            } else {
+                $oldValue = ((string)Mage::getConfig()->getNode($path, $scope, 0+$scopeId));
+                if ($oldValue != $value) {
+                    Mage::getConfig()->saveConfig($path, $value, $scope, $scopeId);
+                }
             }
-            Mage::getConfig()->saveConfig($path, $value, $scope, $scopeId);
         }
 
         Mage::getConfig()->reinit();
